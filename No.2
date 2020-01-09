@@ -1,0 +1,80 @@
+#include <iostream>
+
+using namespace std;
+
+struct barang {
+    string nama;
+    int harga, jml_terjual, total;
+    const int minyak    = 25000;
+    const int beras     = 12000;
+    const int gula      = 12000;
+    const int terigu    = 7000;
+    const int telur     = 5000;
+    const int teh_celup = 5000;
+    const int indomie   = 10000;
+    const int roti      = 8000;
+    const int aqua      = 6000;
+    const int daging    = 45000;
+};
+int main() {
+    barang sembako[4];
+    string bestseller;
+    int max=0;
+    int n=4, topen=0,i;
+    for (i=0; i < n; i++){
+        cout << "Nama item : ";
+        cin >> sembako[i].nama;
+        if (sembako[i].nama == "minyak"){
+            sembako[i].harga = sembako[i].minyak;
+        }else if (sembako[i].nama == "beras"){
+            sembako[i].harga = sembako[i].beras;
+        }else if (sembako[i].nama == "gula"){
+            sembako[i].harga = sembako[i].gula;
+        }else if (sembako[i].nama == "terigu"){
+            sembako[i].harga = sembako[i].terigu;
+        }else if (sembako[i].nama == "telur"){
+            sembako[i].harga = sembako[i].telur;
+        }else if (sembako[i].nama == "teh celup"){
+            sembako[i].harga = sembako[i].teh_celup;
+        }else if (sembako[i].nama == "indomie"){
+            sembako[i].harga = sembako[i].indomie;
+        }else if (sembako[i].nama == "roti"){
+            sembako[i].harga = sembako[i].roti;
+        }else if (sembako[i].nama == "aqua"){
+            sembako[i].harga = sembako[i].aqua;
+        }else if (sembako[i].nama == "daging"){
+            sembako[i].harga = sembako[i].daging;
+        }
+    
+    // menghitung total harga
+    sembako[i].total = sembako[i].harga*sembako[i].jml_terjual;
+    // jumlah jual 
+     cout << "Jumlah yang terjual : ";
+     cin >> sembako[i].jml_terjual;
+    }
+    
+    // sembako (item) yang paling laku
+    for (i=0; i < n; i++){
+        if (max < sembako[i].jml_terjual){
+            max = sembako[i].jml_terjual;
+            bestseller = sembako[i].nama;
+        }
+    }
+    // total penjualan suatu hari
+    for (i=0; i < n; i++){
+        topen = topen + sembako[i].total;
+    }
+
+    cout << endl;
+    
+    cout << "Nama item barang | Harga per item | Jumlah terjual | Total per item" << endl;
+    for (i=0; i < 4; i++) {
+        cout << sembako[i].nama << "                "<<sembako[i].harga << "                 "<<sembako[i].jml_terjual << "                 " <<sembako[i].total << endl;
+    }
+    
+    cout << endl;
+    cout << "Total penjualan : " << topen << endl;
+    cout << "Item terlaku adalah " << bestseller << endl;
+    
+    return 0;
+}
